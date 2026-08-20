@@ -39,28 +39,32 @@ export default function Post() {
                     <img
                         src={service.getFilePreview(post.featuredImage)}
                         alt={post.title}
-                        className="rounded-x w-full object-cover"
+                        className="rounded-xl w-full object-cover"
                     />
 
                     {isAuthor && (
-                        <div className="absolute right-6 top-6">
+                        <div className="absolute right-2 top-2 sm:right-6 sm:top-6 flex flex-wrap gap-2 justify-end">
                             <Link to={`/edit-post/${post.$id}`}>
-                                <Button bgColor="bg-green-500" className="mr-3">
+                                <Button bgColor="bg-green-500" className="text-sm px-3 py-1 sm:text-base sm:px-4 sm:py-2">
                                     Edit
                                 </Button>
                             </Link>
-                            <Button bgColor="bg-red-500" onClick={deletePost}>
+                            <Button
+                                bgColor="bg-red-500"
+                                onClick={deletePost}
+                                className="text-sm px-3 py-1 sm:text-base sm:px-4 sm:py-2"
+                            >
                                 Delete
                             </Button>
                         </div>
                     )}
                 </div>
                 <div className="w-full mb-6">
-                    <h1 className="text-2xl font-bold">{post.title}</h1>
+                    <h1 className="text-2xl font-bold break-words">{post.title}</h1>
                 </div>
-                <div className="browser-css">
+                <div className="browser-css w-full overflow-x-auto break-words [&_img]:max-w-full [&_img]:h-auto">
                     {parse(post.content)}
-                    </div>
+                </div>
             </Container>
         </div>
     ) : null;

@@ -5,9 +5,9 @@ import service from "../../appwrite/config";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-function PostForm({post}) {
-   
-    const {register, handleSubmit, watch, setValue, control, getValues} = useForm({
+function PostForm({ post }) {
+
+    const { register, handleSubmit, watch, setValue, control, getValues } = useForm({
         defaultValues: {
             title: post?.title || '',
             slug: post?.slug || '',
@@ -51,16 +51,16 @@ function PostForm({post}) {
     };
 
     const slugTransform = useCallback((value) => {
-        if (value && typeof value === 'string') 
+        if (value && typeof value === 'string')
             return value
-            .trim()
-            .toLowerCase()
-            .replace(/[^a-zA-Z\d\s]+/g, "-")
-            .replace(/\s/g, "-");
+                .trim()
+                .toLowerCase()
+                .replace(/[^a-zA-Z\d\s]+/g, "-")
+                .replace(/\s/g, "-");
 
-          return "";
-            
-        
+        return "";
+
+
     }, [])
 
 
@@ -74,15 +74,14 @@ function PostForm({post}) {
         return () => subscription.unsubscribe();
     }, [watch, slugTransform, setValue]);
 
-    
 
 
-  
+
     return (
-        
-        
+
+
         <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
-            <div className="w-2/3 px-2">
+            <div className="w-full md:w-2/3 px-2">
                 <Input
                     label="Title :"
                     placeholder="Title"
@@ -100,7 +99,7 @@ function PostForm({post}) {
                 />
                 <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} />
             </div>
-            <div className="w-1/3 px-2">
+            <div className="w-full md:w-1/3 px-2 mt-4 md:mt-0">
                 <Input
                     label="Featured Image :"
                     type="file"
