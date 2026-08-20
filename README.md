@@ -10,7 +10,7 @@ This project was built to practice and demonstrate real-world frontend developme
 
 ## 🚀 Live Demo
 
-**Live Demo:** `https://your-project-url.com`
+**Live Demo:** `full-fledge-application-with-appwri.vercel.app`
 
 ---
 
